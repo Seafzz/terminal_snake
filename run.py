@@ -21,11 +21,19 @@ if played_before in ['no', 'n']:
 def main(stdscr):
     #Make cursor invisible
     curses.curs_set(0) 
-    stdscr.nodelay(1) #Make stscr.get non blocking
+    stdscr.nodelay(1) #Make stscr.getch non blocking
     stdscr.timeout(100) #Refresh screen every 100 ms
 
     #Get the screen dimensions
     sh, sw = stdscr.getmaxyx() #Screen height and width
     w = curses.newwin(sh, sw, 0, 0) #Create a new window
 
+    ¤Create the snake position
+    snake_x = sw//4
+    snake_y = sh//2
+    snake = [
+        [snake_y, snake_x],
+        [snake_y, snake_x-1],
+        [snake_y, snake_x-2]
+    ]
     
