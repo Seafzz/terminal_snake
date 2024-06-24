@@ -79,3 +79,7 @@ def main(stdscr):
                 ]
                 food = nf if nf not in snake else None
             w.addch(food[0], food[1], curses.ACS_PI)
+        else:
+            tail = snake.pop()
+            w.addch(int(tail[0]), int(tail[1]), ' ')
+            
