@@ -39,4 +39,6 @@ def main(stdscr):
     #Initial food position
     food = [sh//2, sw//2]
     w.addch(int(food[0]), int(food[1]), curses.ACS_PI) # Place the food on the screen
-    
+
+    key = curses.KEY_RIGHT #initial direction of the snake (right)
+    score = 0 #Initial score = 0
