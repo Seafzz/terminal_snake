@@ -28,7 +28,7 @@ def main(stdscr):
     sh, sw = stdscr.getmaxyx() #Screen height and width
     w = curses.newwin(sh, sw, 0, 0) #Create a new window
 
-    ¤Create the snake position
+    # Create the snake position
     snake_x = sw//4
     snake_y = sh//2
     snake = [
@@ -36,4 +36,7 @@ def main(stdscr):
         [snake_y, snake_x-1],
         [snake_y, snake_x-2]
     ]
+    #Initial food position
+    food = [sh//2, sw//2]
+    w.addch(int(food[0]), int(food[1]), curses.ACS_PI) # Place the food on the screen
     
