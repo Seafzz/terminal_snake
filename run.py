@@ -86,5 +86,12 @@ def main(stdscr):
             tail = snake.pop()
             w.addch(int(tail[0]), int(tail[1]), ' ')
         
+             # Refresh the screen
+        w.clear()
+        for y, x in snake:
+            w.addch(y, x, curses.ACS_CKBOARD)
+        w.addch(int(food[0]), int(food[1]), curses.ACS_PI)
+        w.refresh()
+        
 #Initialise cuses and start the main game loop
 curses.wrapper(main)
