@@ -81,7 +81,7 @@ def main(stdscr):
                     random.randint(1, sw-1)
                 ]
                 food = nf if nf not in snake else None
-            w.addch(food[0], food[1], curses.ACS_PI)
+            w.addch(int(food[0]), int(food[1]), curses.ACS_PI)
         else:
             tail = snake.pop()
             w.addch(int(tail[0]), int(tail[1]), ' ')
