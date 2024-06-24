@@ -53,4 +53,17 @@ def main(stdscr):
             w.timeout(-1)
             w.getch()
             break #Break the loop to end the game
+        
         new_head = [snake[0][0], snake[0][1]]
+
+        #Update snake direction based on key presses
+        if key == curses.KEY_DOWN:
+            new_head[0] += 1
+        if key == curses.KEY_UP:
+            new_head[0] -= 1
+        if key == curses.KEY_LEFT:
+            new_head[1] -= 1
+        if key == curses.KEY_RIGHT:
+            new_head[1] += 1
+        
+        snake.insert(0, new_head)
