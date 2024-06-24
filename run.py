@@ -36,6 +36,9 @@ def main(stdscr):
         [snake_y, snake_x-1],
         [snake_y, snake_x-2]
     ]
+    for y, x in snake:
+        w.addch(y, x, curses.ACS_CKBOARD)
+    
     #Initial food position
     food = [sh//2, sw//2]
     w.addch(int(food[0]), int(food[1]), curses.ACS_PI) # Place the food on the screen
@@ -50,7 +53,7 @@ def main(stdscr):
         if snake[0][0] in [0, sh] or snake[0][1] in [0, sw] or snake[0] in snake[1:]:
             msg = "Game Over! Your score was: " + str(score)
             w.addstr(sh//2, sw//2 - len(msg)//2, msg)
-            w.timeout(-1)
+            w.refresh()
             w.getch()
             break #Break the loop to end the game
         
@@ -82,4 +85,6 @@ def main(stdscr):
         else:
             tail = snake.pop()
             w.addch(int(tail[0]), int(tail[1]), ' ')
-            
+        
+#Initialise cuses and start the main game loop
+curses.wrapper(main)
