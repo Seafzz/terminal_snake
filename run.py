@@ -23,3 +23,9 @@ def main(stdscr):
     curses.curs_set(0) 
     stdscr.nodelay(1) #Make stscr.get non blocking
     stdscr.timeout(100) #Refresh screen every 100 ms
+
+    #Get the screen dimensions
+    sh, sw = stdscr.getmaxyx() #Screen height and width
+    w = curses.newwin(sh, sw, 0, 0) #Create a new window
+
+    
