@@ -7,7 +7,7 @@ player_name = input("Please enter your name:")
 #Check if the player has played before:
 while True:
     played_before = input("Have you played Snake before? (yes/no)").lower()
-    if played_before in {'yes', 'y' 'no', 'n'}:
+    if played_before in {'yes', 'y', 'no', 'n'}:
         break
     else:
         print("Invalid input. Please enter 'yes' or 'no'")
@@ -42,3 +42,15 @@ def main(stdscr):
 
     key = curses.KEY_RIGHT #initial direction of the snake (right)
     score = 0 #Initial score = 0
+
+    while True:
+        next_key = w.getch()
+        key = key if next_key == -1 else next_key
+
+        if snake[0][0] in [0, sh] or snake[0][1] in [0, sw] or snake[0] in snake[1:]:
+            msg = "Game Over! Your score was: " + str(score)
+            w.addstr(sh//2, sw//2 - len(msg)//2, msg)
+            w.timeout(-1)
+            w.getch()
+            break #Break the loop to end the game
+        new_head = [snake[0][0], snake[0][1]]
